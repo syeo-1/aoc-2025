@@ -1,3 +1,4 @@
+from functools import reduce
 
 def split_file_line_contents_whitespace(file_contents, datatype='str'):
     '''
@@ -44,7 +45,6 @@ def transpose_matrix(m):
     return list(map(list, zip(*m)))
 
 
-
 def flatten(l):
     '''
     flattens a nested list up to 10 levels
@@ -59,10 +59,38 @@ def flatten(l):
     return out
 
 
+def singleline_split(filepath, split_char):
+    '''
+    takes a file and splits the single line input based on the given character
+    '''
+    with open(filepath) as file:
+        output = file.readline()
+        
+    return output.split(split_char)
+    
+    # print()
+
+def generate_factors(n):
+    '''
+    Docstring for generate_factors
+    
+    :param num: given a number, generate and return a set containing all of its factors (including 1)
+    '''
+    # Source - https://stackoverflow.com/a
+    # Posted by agf, modified by community. See post 'Timeline' for change history
+    # Retrieved 2025-12-02, License - CC BY-SA 4.0
+    return set(reduce(
+        list.__add__,
+        ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
+
+
+
+
+
 def main():
-    file_lines = read_file_lines('input1.txt')
-    processed_file_lines = split_file_line_contents_whitespace(file_lines, 'int')
-    print(processed_file_lines)
+    # file_lines = read_file_lines('input1.txt')
+    # processed_file_lines = split_file_line_contents_whitespace(file_lines, 'int')
+    print(generate_factors(2))
 
 if __name__ == '__main__':
     main()
