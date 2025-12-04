@@ -10,14 +10,14 @@ one thing I learned is that for working with 2d arrays, it's typically easier to
 
 eg. if the matrix is the following
 
-XX
+XX<br>
 XX
 
 adding a layer of padding would make it something like
 
-....
-.XX.
-.XX.
+....<br>
+.XX.<br>
+.XX.<br>
 ....
 
 this is really helpful when you want to check elements at the start and end of rows and columns and avoiding off by one indexing errors.
