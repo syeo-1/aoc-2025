@@ -83,6 +83,25 @@ def generate_factors(n):
         list.__add__,
         ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
 
+def pad_matrix(M, wall_char):
+    '''
+    sometimes it may be easier to pad the outside of a 2d array to work with edge cases.
+    This function pads the outside of the 2d array with the given wall character and returns a new modified 2d array
+    
+    :param M: matrix to add padding to
+    :param wall_char: use this character when adding padding to the matrix
+    :param target_char: use this for any other needed operations
+    '''
+
+    result = []
+    result.append([wall_char]*(len(M[0])+2))
+    for row in M:
+        result.append([wall_char]+row+[wall_char])
+    result.append([wall_char]*(len(M[0])+2))
+
+    return result
+
+
 
 
 
