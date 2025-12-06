@@ -23,6 +23,19 @@ def split_file_line_contents_whitespace(file_contents, datatype='str'):
 
     return result
 
+def read_file_lines_raw(filepath):
+    '''
+    read and split the contents of text input by newlines without getting rid of extra whitespace at the end of input lines
+    
+    :param filepath: path to the file
+    '''
+    result = []
+    with open(filepath) as file:
+        for line in file:
+            result.append(line.rstrip('\n'))
+
+    return result
+
 
 def read_file_lines(filepath):
     '''
