@@ -101,15 +101,26 @@ def pad_matrix(M, wall_char):
 
     return result
 
+def process_divided_input(filename):
+    '''
+    processes the given filename in which there are two distinct input types separated by a double newline
+    '''
+    filelines = read_file_lines(filename)
 
+    empty_string_index = filelines.index('')
 
+    return [
+        filelines[:empty_string_index],
+        filelines[empty_string_index+1:]
+    ]
 
 
 
 def main():
     # file_lines = read_file_lines('input1.txt')
     # processed_file_lines = split_file_line_contents_whitespace(file_lines, 'int')
-    print(generate_factors(2))
+    # print(generate_factors(2))
+    print(process_divided_input('input5_test.txt'))
 
 if __name__ == '__main__':
     main()
